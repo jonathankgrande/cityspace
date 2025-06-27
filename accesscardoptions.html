@@ -3,26 +3,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Choose Your Room | CitySpace</title>
+  <title>Choose Your Room & Locker | CitySpace</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    let reservationData = {
+      roomType: '',
+      roomLocation: '',
+      lockerSize: '',
+      lockerLocation: '',
+    };
+
     function showForm(id) {
       document.querySelectorAll('.form-section').forEach(el => el.classList.add('hidden'));
       document.getElementById('confirmation').classList.add('hidden');
       document.getElementById(id).classList.remove('hidden');
-      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+      document.getElementById(id).scrollIntoView({behavior:'smooth'});
     }
 
-    function submitForm(formId) {
-      document.getElementById(formId).classList.add('hidden');
-      document.getElementById('confirmation').classList.remove('hidden');
-      document.getElementById('confirmation').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    function selectRoom(type, selectId) {
+      reservationData.roomType = type;
+      reservationData.roomLocation = document.getElementById(selectId).value;
+      document.getElementById('lockerOptions').classList.remove('hidden');
+      document.getElementById('lockerOptions').scrollIntoView({behavior:'smooth'});
+    }
+
+    function selectLocker() {
+      reservationData.lockerSize = document.querySelector('input[name="lockerSize"]:checked')?.value || '';
+      reservationData.lockerLocation = document.getElementById('lockerLocation').value;
+      document.getElementById('review').classList.remove('hidden');
+      document.getElementById('review').scrollIntoView({behavior:'smooth'});
+
+      document.getElementById('summary-room').innerText = `${reservationData.roomType} at ${reservationData.roomLocation}`;
+      document.getElementById('summary-locker').innerText = reservationData.lockerSize
+        ? `${reservationData.lockerSize} at ${reservationData.lockerLocation}`
+        : 'None selected';
+    }
+
+    function confirmReservation() {
+      document.getElementById('review').classList.add('hidden');
+      document.getElementById('final').classList.remove('hidden');
+      document.getElementById('final').scrollIntoView({behavior:'smooth'});
+
+      document.getElementById('final-room').innerText = `${reservationData.roomType} at ${reservationData.roomLocation}`;
+      document.getElementById('final-locker').innerText = reservationData.lockerSize
+        ? `${reservationData.lockerSize} at ${reservationData.lockerLocation}`
+        : 'None selected';
     }
   </script>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-  <!-- Navigation Bar -->
+  <!-- Header -->
   <header class="bg-cyan-500 text-white shadow-md">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center font-semibold">
       <div class="flex space-x-6 text-sm">
@@ -33,102 +64,103 @@
                onmouseout="this.classList.remove('opacity-100','visible')">
             <a href="accesscard-profile.html" class="block px-4 py-2 text-gray-800 hover:bg-cyan-100">Access Card Profile</a>
             <a href="accesscardapp.html" class="block px-4 py-2 text-gray-800 hover:bg-cyan-100">Access Card Application</a>
-            <a href="accesscardoptions.html" class="block px-4 py-2 text-gray-800 hover:bg-cyan-100">Choose your room or locker</a>
-
+            <a href="accesscardoptions.html" class="block px-4 py-2 text-gray-800 hover:bg-cyan-100">Choose Room/Locker</a>
           </div>
         </div>
         <a href="freestorepage.html" class="hover:underline">FreeStore</a>
-        <a href="#" class="hover:underline">Donate</a>
+        <a href="donations.html" class="hover:underline">Donate</a>
       </div>
       <div class="flex items-center space-x-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="white">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4H9v4a1 1 0 01-1 1H4a1 1 0 01-1-1V10z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4H9v4a1 1 0 01-1 1H4a1 1 0 01-1-1V10z" />
         </svg>
         <span class="text-2xl font-extrabold">CitySpace</span>
       </div>
       <div class="flex space-x-6 text-sm">
         <a href="index.html" class="hover:underline">Home</a>
-        <a href="#" class="hover:underline">About Us</a>
+        <a href="aboutus.html" class="hover:underline">About Us</a>
         <a href="contact.html" class="hover:underline">Contact</a>
       </div>
     </div>
   </header>
 
-  <!-- Main Section -->
-  <main class="max-w-7xl mx-auto px-6 py-12">
-    <h1 class="text-3xl font-bold mb-8 text-center">Access Card Rooms</h1>
+  <!-- Main -->
+  <main class="max-w-4xl mx-auto px-6 py-12">
+
+    <h1 class="text-3xl font-bold mb-8 text-center">Choose Your Room</h1>
     <p class="text-center text-gray-700 mb-10">Choose between three space-suited rooms</p>
 
-    <div class="grid md:grid-cols-3 gap-8 mb-16">
-      <button onclick="showForm('singleForm')" class="bg-lime-400 rounded-xl p-6 shadow hover:shadow-lg text-left transition">
-        <h2 class="text-2xl font-bold mb-3 text-center">Single</h2>
-        <p class="text-sm leading-relaxed">
-          Perfect for: Someone carrying just the essentials.<br>
-          Ideal for: A backpack, important documents, hygiene items, small electronics, or personal keepsakes.
-        </p>
-      </button>
-      <button onclick="showForm('doubleForm')" class="bg-lime-400 rounded-xl p-6 shadow hover:shadow-lg text-left transition">
-        <h2 class="text-2xl font-bold mb-3 text-center">Double</h2>
-        <p class="text-sm leading-relaxed">
-          Perfect for: Two people, or one person with more belongings.<br>
-          Ideal for: Extra bags, seasonal clothing, small gear, or personal items that matter.
-        </p>
-      </button>
-      <button onclick="showForm('multiForm')" class="bg-lime-400 rounded-xl p-6 shadow hover:shadow-lg text-left transition">
-        <h2 class="text-2xl font-bold mb-3 text-center">Multi-Space</h2>
-        <p class="text-sm leading-relaxed">
-          Perfect for: Families, small groups, or anyone managing a mix of needs.<br>
-          Ideal for: Shared items, supplies, or separating belongings by person or purpose.
-        </p>
-      </button>
-    </div>
-
-    <!-- Forms -->
-    <div id="singleForm" class="form-section hidden mb-16">
-      <h3 class="text-xl font-bold mb-4">Reserve a Single Room</h3>
-      <form class="space-y-4">
-        <select class="w-full border rounded px-3 py-2">
+    <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="bg-lime-200 rounded-xl p-4 shadow">
+        <h2 class="font-bold text-xl mb-2 text-center">Single</h2>
+        <p class="text-sm mb-2">Perfect for: Someone carrying just the essentials.<br>Ideal for: A backpack, important documents, hygiene items, small electronics, or personal keepsakes.</p>
+        <select id="singleSelect" class="w-full border rounded px-2 py-1 mb-2">
           <option>Midtown Shelter – 245 West Ave</option>
-          <option>Riverfront Hub – 88 East Parkway</option>
           <option>Harbor House – 601 Pine Street</option>
         </select>
-        <button type="button" onclick="submitForm('singleForm')" class="bg-cyan-600 text-white px-6 py-2 rounded hover:bg-cyan-700">
-          Confirm Reservation
-        </button>
-      </form>
-    </div>
+        <button onclick="selectRoom('Single Room', 'singleSelect')" class="w-full bg-cyan-600 text-white px-4 py-2 rounded">Choose Single</button>
+      </div>
 
-    <div id="doubleForm" class="form-section hidden mb-16">
-      <h3 class="text-xl font-bold mb-4">Reserve a Double Room</h3>
-      <form class="space-y-4">
-        <select class="w-full border rounded px-3 py-2">
+      <div class="bg-lime-200 rounded-xl p-4 shadow">
+        <h2 class="font-bold text-xl mb-2 text-center">Double</h2>
+        <p class="text-sm mb-2">Perfect for: Two people, or one person with more belongings.<br>Ideal for: Extra bags, seasonal clothing, small gear, or personal items that matter.</p>
+        <select id="doubleSelect" class="w-full border rounded px-2 py-1 mb-2">
           <option>Union Commons – 112 Spring St.</option>
           <option>SafeStay – 309 Jefferson Ave</option>
         </select>
-        <button type="button" onclick="submitForm('doubleForm')" class="bg-cyan-600 text-white px-6 py-2 rounded hover:bg-cyan-700">
-          Confirm Reservation
-        </button>
-      </form>
-    </div>
+        <button onclick="selectRoom('Double Room', 'doubleSelect')" class="w-full bg-cyan-600 text-white px-4 py-2 rounded">Choose Double</button>
+      </div>
 
-    <div id="multiForm" class="form-section hidden mb-16">
-      <h3 class="text-xl font-bold mb-4">Reserve a Multi-Space Room</h3>
-      <form class="space-y-4">
-        <select class="w-full border rounded px-3 py-2">
-          <option>Harbor House – 601 Pine Street</option>
+      <div class="bg-lime-200 rounded-xl p-4 shadow">
+        <h2 class="font-bold text-xl mb-2 text-center">Multi-Space</h2>
+        <p class="text-sm mb-2">Perfect for: Families, small groups, or anyone managing a mix of needs.<br>Ideal for: Shared items, supplies, or separating belongings by person or purpose.</p>
+        <select id="multiSelect" class="w-full border rounded px-2 py-1 mb-2">
           <option>Union Commons – 112 Spring St.</option>
+          <option>Harbor House – 601 Pine Street</option>
         </select>
-        <button type="button" onclick="submitForm('multiForm')" class="bg-cyan-600 text-white px-6 py-2 rounded hover:bg-cyan-700">
-          Confirm Reservation
-        </button>
-      </form>
+        <button onclick="selectRoom('Multi-Space Room', 'multiSelect')" class="w-full bg-cyan-600 text-white px-4 py-2 rounded">Choose Multi</button>
+      </div>
     </div>
 
-    <!-- Confirmation -->
-    <div id="confirmation" class="hidden mt-12 text-center bg-green-100 p-6 rounded-lg shadow">
-      <h3 class="text-2xl font-bold text-green-800 mb-2">Thank you for submitting!</h3>
-      <p class="text-green-700">Your room reservation has been received. We'll follow up with next steps soon.</p>
+    <!-- Locker -->
+    <div id="lockerOptions" class="hidden form-section mb-12">
+      <h2 class="text-xl font-bold mb-4 text-center">Would you like to add a locker?</h2>
+      <div class="mb-4">
+        <label class="block mb-2">Locker Size:</label>
+        <label><input type="radio" name="lockerSize" value="Small Locker"> Small Locker</label><br>
+        <label><input type="radio" name="lockerSize" value="Medium Locker"> Medium Locker</label><br>
+        <label><input type="radio" name="lockerSize" value="Large Locker"> Large Locker</label>
+      </div>
+      <div class="mb-6">
+        <label class="block mb-2">Locker Location:</label>
+        <select id="lockerLocation" class="w-full border rounded px-2 py-1">
+          <option>Brooklyn Storage Hub – 77 Gold Street</option>
+          <option>Union Commons Locker Room</option>
+        </select>
+      </div>
+      <button onclick="selectLocker()" class="bg-cyan-600 text-white px-6 py-2 rounded hover:bg-cyan-700">Continue to Review</button>
+    </div>
+
+    <!-- Review -->
+    <div id="review" class="hidden bg-white p-6 rounded-xl shadow-lg">
+      <h2 class="text-2xl font-bold mb-4 text-center">You're Almost There!</h2>
+      <p class="text-center mb-6">Review your selections and confirm:</p>
+      <ul class="text-sm mb-6">
+        <li><strong>Room:</strong> <span id="summary-room"></span></li>
+        <li><strong>Locker:</strong> <span id="summary-locker"></span></li>
+      </ul>
+      <div class="text-center">
+        <button onclick="confirmReservation()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Confirm My Reservation</button>
+      </div>
+    </div>
+
+    <!-- Final -->
+    <div id="final" class="hidden bg-green-100 p-6 mt-12 rounded-xl shadow text-center">
+      <h2 class="text-2xl font-bold text-green-800 mb-4">Your Space is Reserved!</h2>
+      <p class="mb-2">You've successfully reserved:</p>
+      <p class="mb-2"><strong>Room:</strong> <span id="final-room"></span></p>
+      <p class="mb-4"><strong>Locker:</strong> <span id="final-locker"></span></p>
+      <p class="text-sm text-gray-700">We’ll follow up with next steps. If anything changes, feel free to reach out at info@cityspace.com or +1 (800) 123-4567.</p>
     </div>
   </main>
 
