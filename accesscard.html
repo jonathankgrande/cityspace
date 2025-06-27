@@ -11,7 +11,21 @@
   <header class="bg-cyan-500 text-white shadow-md">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center font-semibold">
       <div class="flex space-x-6 text-sm">
-        <a href="accesscard.html" class="hover:underline">Access Card</a>
+<!-- Access Card Dropdown -->
+<div class="relative group text-sm">
+  <button class="hover:underline font-semibold">Access Card</button>
+
+  <div class="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+       onmouseover="this.classList.add('opacity-100','visible')"
+       onmouseout="this.classList.remove('opacity-100','visible')">
+    <a href="accesscard-profile.html" class="block px-4 py-2 text-gray-800 hover:bg-cyan-100">Access Card Profile</a>
+    <a href="accesscardapp.html" class="block px-4 py-2 text-gray-800 hover:bg-cyan-100">Access Card Application</a>
+    <a href="accesscardoptions.html" class="block px-4 py-2 text-gray-800 hover:bg-cyan-100">Choose your room or locker</a>
+
+  </div>
+</div>
+
+
         <a href="freestorepage.html" class="hover:underline">FreeStore</a>
         <a href="#" class="hover:underline">Donate</a>
       </div>
