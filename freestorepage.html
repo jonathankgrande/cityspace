@@ -1,90 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FreeStore | CitySpace</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CitySpace FreeStore</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900">
-  <!-- Navigation Bar -->
+
+  <!-- Navbar -->
   <header class="bg-cyan-500 text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center font-semibold">
-      <div class="flex space-x-6 text-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center font-semibold text-sm">
+      <div class="flex space-x-6">
         <a href="accesscard.html" class="hover:underline">Access Card</a>
         <a href="freestorepage.html" class="hover:underline">FreeStore</a>
         <a href="donations.html" class="hover:underline">Donate</a>
       </div>
       <div class="flex items-center space-x-2">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4H9v4a1 1 0 01-1 1H4a1 1 0 01-1-1V10z" />
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="white">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4H9v4a1 1 0 01-1 1H4a1 1 0 01-1-1V10z"/>
         </svg>
         <span class="text-2xl font-extrabold">CitySpace</span>
       </div>
-      <div class="flex space-x-6 text-sm">
+      <div class="flex space-x-6">
         <a href="index.html" class="hover:underline">Home</a>
-        <a href="#" class="hover:underline">About Us</a>
+        <a href="aboutus.html" class="hover:underline">About Us</a>
         <a href="contact.html" class="hover:underline">Contact</a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="max-w-6xl mx-auto px-4 py-12">
-    <h1 class="text-4xl font-bold text-center mb-6">FreeStore</h1>
-    <p class="text-lg text-center max-w-3xl mx-auto mb-8">Drop off what you can. Take what you need. Give freely. Receive with dignity. FreeStore is a donation-powered resource hub for clothing, hygiene products, and everyday essentials.</p>
-    <img src="img/freestore-hero.png" alt="FreeStore Image" class="w-full h-96 object-cover rounded-lg">
-  </section>
+  <!-- PAGE SECTIONS -->
+  <main id="mainContent">
 
-  <!-- How FreeStore Works -->
-  <section class="bg-lime-200 py-12 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6">How It Works</h2>
-      <ul class="list-disc pl-5 space-y-3 text-lg">
-        <li>No sign-up or ID required to take what you need.</li>
-        <li>Anyone can contribute — just drop items in designated bins or with staff.</li>
-        <li>All donations are inspected and sorted for safety and dignity.</li>
-        <li>Take items as often as needed — no questions asked.</li>
-      </ul>
-    </div>
-  </section>
+    <!-- Hero -->
+    <section class="text-center py-12 px-4">
+      <h1 class="text-4xl font-bold mb-4">FreeStore</h1>
+      <p class="text-lg max-w-2xl mx-auto">Drop off what you can. Take what you need. Give freely. Receive with dignity.</p>
+      <img src="img/freestore-hero.png" alt="FreeStore" class="mx-auto rounded-lg mt-6 h-64 object-cover">
+      <button onclick="showStep('essentials')" class="mt-6 bg-lime-500 hover:bg-lime-600 text-white px-6 py-2 rounded">Start</button>
+    </section>
 
-  <!-- Contact / Talk to Us -->
-  <section class="bg-white py-16 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-200 via-white to-lime-100 opacity-40 -z-10"></div>
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
-      <div>
-        <h2 class="text-3xl font-bold mb-4">Talk to Us</h2>
-        <p class="mb-2 text-gray-700">Our team is here. We believe access to your belongings is a right, not a luxury.</p>
-        <ul class="text-gray-700 space-y-2">
-          <li><strong>Phone:</strong> +1 (800) 123-4567</li>
-          <li><strong>Email:</strong> info@cityspace.com</li>
-          <li><strong>Instagram:</strong> @cityspaceorg</li>
-          <li><strong>Main Location:</strong> 563 West 9<sup>th</sup> Street Brooklyn, NY 11203</li>
-        </ul>
-        <form class="mt-6 space-y-4">
-          <input type="text" placeholder="Your Name" class="w-full px-4 py-2 border rounded">
-          <input type="email" placeholder="Your Email" class="w-full px-4 py-2 border rounded">
-          <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-2 border rounded"></textarea>
-          <button class="bg-cyan-600 text-white px-6 py-2 rounded hover:bg-cyan-700">Send Message</button>
-        </form>
+    <!-- Essentials Selection -->
+    <section id="essentials" class="hidden max-w-4xl mx-auto py-12 px-4">
+      <h2 class="text-2xl font-bold mb-4">Choose Essentials to Donate</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="flex justify-between items-center border p-2 rounded bg-white shadow-sm">
+          <label for="hygiene" class="flex-grow">Hygiene Kits</label>
+          <input id="hygiene" type="number" min="0" class="w-20 ml-4 px-2 py-1 border rounded quantity" data-label="Hygiene Kits">
+        </div>
+        <div class="flex justify-between items-center border p-2 rounded bg-white shadow-sm">
+          <label for="food" class="flex-grow">Non-perishable Food</label>
+          <input id="food" type="number" min="0" class="w-20 ml-4 px-2 py-1 border rounded quantity" data-label="Non-perishable Food">
+        </div>
+        <div class="flex justify-between items-center border p-2 rounded bg-white shadow-sm">
+          <label for="blanket" class="flex-grow">Comfort Blanket</label>
+          <input id="blanket" type="number" min="0" class="w-20 ml-4 px-2 py-1 border rounded quantity" data-label="Comfort Blanket">
+        </div>
+        <div class="flex justify-between items-center border p-2 rounded bg-white shadow-sm">
+          <label for="charger" class="flex-grow">USB Charger</label>
+          <input id="charger" type="number" min="0" class="w-20 ml-4 px-2 py-1 border rounded quantity" data-label="USB Charger">
+        </div>
       </div>
-      <div>
-        <iframe 
-          class="rounded-lg w-full h-80 border"
-          src="https://www.google.com/maps?q=563%20W%209th%20St%20Brooklyn%20NY%2011203&output=embed"
-          frameborder="0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>      
-    </div>
-  </section>
+      <button onclick="showStep('checkout')" class="mt-6 bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-2 rounded">Next</button>
+    </section>
 
-  <!-- Footer -->
-  <footer class="text-center py-6 text-sm text-gray-600">
-    © 2025 CitySpace. All rights reserved.
-  </footer>
+    <!-- Checkout -->
+    <section id="checkout" class="hidden max-w-xl mx-auto py-12 px-4">
+      <h2 class="text-2xl font-bold mb-4">Enter Your Information</h2>
+      <form id="checkoutForm" class="space-y-4">
+        <input type="text" id="name" placeholder="Full Name" class="w-full border px-4 py-2 rounded" required>
+        <input type="email" id="email" placeholder="Email" class="w-full border px-4 py-2 rounded" required>
+        <input type="tel" id="phone" placeholder="Phone (optional)" class="w-full border px-4 py-2 rounded">
+        <textarea id="note" placeholder="Leave a note (optional)" class="w-full border px-4 py-2 rounded"></textarea>
+      </form>
+      <button onclick="submitForm()" class="mt-4 bg-lime-500 hover:bg-lime-600 text-white px-6 py-2 rounded">Confirm Donation</button>
+    </section>
+
+    <!-- Confirmation -->
+    <section id="confirmation" class="hidden max-w-2xl mx-auto py-12 px-4">
+      <h2 class="text-2xl font-bold text-green-600 mb-4">You're All Set! Donation Confirmed</h2>
+      <p class="mb-4">Thank you, <span id="donorName" class="font-bold"></span>!</p>
+      <h3 class="font-semibold mb-2">Your Donation Includes:</h3>
+      <ul id="donationList" class="list-disc pl-6 mb-4"></ul>
+      <h3 class="font-semibold mb-2">Contact Details:</h3>
+      <p>Email: <span id="donorEmail"></span></p>
+      <p>Phone: <span id="donorPhone"></span></p>
+      <p class="mt-4 text-sm text-gray-600">We appreciate your kindness and support. Together, we’re creating a City of Care.</p>
+    </section>
+  </main>
+
+  <script>
+    function showStep(step) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(step).classList.remove('hidden');
+    }
+
+    function submitForm() {
+      const itemInputs = document.querySelectorAll('.quantity');
+      const selectedItems = [];
+
+      itemInputs.forEach(input => {
+        const qty = parseInt(input.value, 10);
+        if (qty > 0) {
+          selectedItems.push(`${input.dataset.label} × ${qty}`);
+        }
+      });
+
+      localStorage.setItem('donationItems', JSON.stringify(selectedItems));
+      localStorage.setItem('donorName', document.getElementById('name').value);
+      localStorage.setItem('donorEmail', document.getElementById('email').value);
+      localStorage.setItem('donorPhone', document.getElementById('phone').value);
+      localStorage.setItem('donorNote', document.getElementById('note').value);
+
+      document.getElementById('donorName').textContent = localStorage.getItem('donorName');
+      document.getElementById('donorEmail').textContent = localStorage.getItem('donorEmail');
+      document.getElementById('donorPhone').textContent = localStorage.getItem('donorPhone');
+
+      const items = JSON.parse(localStorage.getItem('donationItems'));
+      const list = document.getElementById('donationList');
+      list.innerHTML = "";
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      showStep('confirmation');
+    }
+  </script>
 </body>
 </html>

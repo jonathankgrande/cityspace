@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Us | CitySpace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+<!-- Navbar -->
+<header class="bg-cyan-500 text-white shadow-md">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center font-semibold">
+    <div class="flex space-x-6 text-sm">
+      <div class="relative group text-sm">
+        <button class="hover:underline font-semibold">Access Card</button>
+        <div class="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50"
+             onmouseover="this.classList.add('opacity-100','visible')"
+             onmouseout="this.classList.remove('opacity-100','visible')">
+          <a href="accesscard-profile.html" class="block px-4 py-2 text-gray-800 hover:bg-cyan-100">Access Card Profile</a>
+          <a href="accesscardapp.html" class="block px-4 py-2 text-gray-800 hover:bg-cyan-100">Access Card Application</a>
+        </div>
+      </div>
+      <a href="freestorepage.html" class="hover:underline">FreeStore</a>
+      <a href="donations.html" class="hover:underline">Donate</a>
+    </div>
+    <div class="text-2xl font-extrabold">CitySpace</div>
+    <div class="flex space-x-6 text-sm">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="aboutus.html" class="underline">About Us</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
+    </div>
+  </div>
+</header>
+
+<!-- About Us Section -->
+<main class="max-w-4xl mx-auto px-6 py-12">
+  <h1 class="text-4xl font-bold mb-4 text-center text-cyan-700">About CitySpace</h1>
+  <p class="text-lg mb-6 text-gray-700 text-center max-w-2xl mx-auto">
+    CitySpace is a grassroots community initiative built to support people experiencing housing insecurity.
+    We provide practical services like room access, lockers for belongings, and essential supplies through
+    our FreeStore network—ensuring every person has a place to keep what matters most.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-10 mt-12">
+    <div>
+      <h2 class="text-xl font-semibold mb-2 text-cyan-800">Our Mission</h2>
+      <p class="text-gray-700">
+        We believe dignity starts with stability. Whether it’s a warm blanket, a safe place to store documents, or a hygiene kit,
+        CitySpace helps people meet their needs without shame or delay. We aim to restore autonomy and respect—one interaction at a time.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-semibold mb-2 text-cyan-800">How We Work</h2>
+      <p class="text-gray-700">
+        CitySpace partners with shelters, mutual aid groups, and local volunteers to operate accessible hubs across NYC.
+        Donations from people like you help keep our lockers stocked and our outreach strong. Every contribution goes directly
+        to supporting someone’s next step forward.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-12 text-center">
+    <h2 class="text-xl font-semibold mb-2 text-cyan-800">Want to Help?</h2>
+    <p class="text-gray-700 mb-4">Get involved by donating, sharing our work, or volunteering your time.</p>
+    <a href="#" class="bg-cyan-600 text-white px-6 py-2 rounded hover:bg-cyan-700 transition">Make a Difference</a>
+  </div>
+</main>
+
+<footer class="text-center py-6 text-sm text-gray-600">
+  © 2025 CitySpace. All rights reserved.
+</footer>
+</body>
+</html>
